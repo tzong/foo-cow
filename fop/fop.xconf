@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+
+<fop version="1.0">
+
+  <base>..</base>
+  
+  <!-- Default page-height and page-width, in case
+       value is specified as auto -->
+<!--
+  <default-page-settings height="11in" width="8.26in"/>
+-->
+  
+  <renderers>
+    <renderer mime="application/pdf">
+      <filterList>
+        <value>flate</value>
+      </filterList>
+
+      <fonts>
+      	<auto-detect/>
+        <referenced-fonts>
+          <match font-family="Arial"/>
+        </referenced-fonts>
+    <substitutions>
+      <substitution>
+        <from font-family="Arial"/>
+        <to font-family="Liberation Sans"/>
+      </substitution>
+    </substitutions>
+      </fonts>
+
+    </renderer>
+
+    <renderer mime="image/svg+xml">
+      <format type="paginated"/>
+      <link value="true"/>
+      <strokeText value="false"/>
+    </renderer>
+
+    <renderer mime="image/png">
+      <!--transparent-page-background>true</transparent-page-background-->
+    </renderer>
+
+    <renderer mime="image/tiff">
+      <!--transparent-page-background>true</transparent-page-background-->
+      <!--compression>CCITT T.6</compression-->
+    </renderer>
+
+    <renderer mime="text/xml">
+    </renderer>
+
+    <!-- RTF does not have a renderer
+    <renderer mime="text/rtf">
+    </renderer>
+    -->
+
+  </renderers>
+
+</fop>
+
