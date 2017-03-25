@@ -7,6 +7,5 @@ all:
 	$(FOP) -c $(FOPCONF) -pdf $@ -fo $<
 
 clean:
-	rm -f *.fo
 	rm -f *.pdf
 
