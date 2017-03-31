@@ -8,7 +8,7 @@
 </xsl:template>
 
 <xsl:template match="meeting">
-<fo:root><xsl:attribute name="font">12pt Times New Roman</xsl:attribute>
+<fo:root><xsl:attribute name="font">12pt Liberation Serif</xsl:attribute>
 <fo:layout-master-set>
   <fo:simple-page-master master-name="page" margin="2cm" margin-right="1cm">
     <fo:region-body/>
