@@ -16,4 +16,4 @@ ballots.fo: meeting.xml ballots.xml ballots.xsl
 
 clean:
 	rm -f *.pdf
-
+	rm -f ballots.fo ballots.xml
