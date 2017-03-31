@@ -6,6 +6,10 @@ BEGIN {
 	print "<ballots>"
 }
 
+NR == 1 {
+	next
+}
+
 {
 	print "<ballot><creditor>" $1 "</creditor>"
 	print "<claim>" $2 "</claim></ballot>"
