@@ -103,6 +103,10 @@
           </fo:table-body>
         </fo:table>
         <fo:block text-align="center" border-bottom="thin solid black" margin-top="0.5cm">
+        <xsl:choose><xsl:when test="string-length($topic) &gt; 1000">
+          <xsl:attribute name="font-size">8pt</xsl:attribute>
+        </xsl:when>
+        </xsl:choose>
           <xsl:value-of select="$topic"/>
         </fo:block>
         <fo:block text-align="center" font-size="10pt">(формулировка решения, поставленного на голосование)</fo:block>
