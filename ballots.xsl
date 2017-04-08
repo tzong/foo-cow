@@ -4,8 +4,6 @@
   <xsl:template match="text()">
   </xsl:template>
   
-  <xsl:param name="margin-top">0.5cm</xsl:param>
-  
   <xsl:template match="meeting">
     <fo:root>
       <xsl:attribute name="font">12pt Liberation Serif</xsl:attribute>
@@ -23,6 +21,12 @@
   </xsl:template>
   <xsl:template match="topic[not(@skip)]|topic[@skip='0']">
     <xsl:param name="topic" select="."/>
+    <xsl:param name="margin-top">
+      <xsl:choose>
+        <xsl:when test="string-length($topic) &gt; 1000">0.3cm</xsl:when>
+        <xsl:otherwise>0.5cm</xsl:otherwise>
+      </xsl:choose>
+    </xsl:param>  
     <xsl:variable name="ballot-text">
       <xsl:choose>
         <xsl:when test="@ballot-text">
@@ -108,7 +112,6 @@
         <fo:block text-align="center" border-bottom="thin solid black"><xsl:attribute name="margin-top"><xsl:value-of select="$margin-top"/></xsl:attribute>
         <xsl:choose><xsl:when test="string-length($topic) &gt; 1000">
           <xsl:attribute name="font-size">8pt</xsl:attribute>
-          <xsl:attribute name="margin-top">0.4cm</xsl:attribute>
         </xsl:when>
         </xsl:choose>
           <xsl:value-of select="$topic"/>
