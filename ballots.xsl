@@ -2,7 +2,10 @@
 <xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format" version="1.0">
   <xsl:output encoding="UTF-8" indent="yes" method="xml"/>
   <xsl:template match="text()">
-</xsl:template>
+  </xsl:template>
+  
+  <xsl:param name="margin-top">0.5cm</xsl:param>
+  
   <xsl:template match="meeting">
     <fo:root>
       <xsl:attribute name="font">12pt Liberation Serif</xsl:attribute>
@@ -45,10 +48,10 @@
     <xsl:for-each select="//creditor">
       <fo:block-container break-after="page">
         <fo:block font-size="6pt" text-align="right">Типовая форма бюллетеня для голосования участников собрания кредиторов N 1</fo:block>
-        <fo:block text-align="center" font-size="18pt" margin-top="0.5cm">Собрание кредиторов</fo:block>
-        <fo:block text-align="center" border-bottom="solid thin black" margin-top="0.5cm"><xsl:value-of select="//debtor/name"/> (ИНН <xsl:value-of select="//debtor/inn"/>, ОГРН <xsl:value-of select="//debtor/ogrn"/>), <xsl:value-of select="//debtor/address"/></fo:block>
+        <fo:block text-align="center" font-size="18pt"><xsl:attribute name="margin-top"><xsl:value-of select="$margin-top"/></xsl:attribute>Собрание кредиторов</fo:block>
+        <fo:block text-align="center" border-bottom="solid thin black"><xsl:attribute name="margin-top"><xsl:value-of select="$margin-top"/></xsl:attribute><xsl:value-of select="//debtor/name"/> (ИНН <xsl:value-of select="//debtor/inn"/>, ОГРН <xsl:value-of select="//debtor/ogrn"/>), <xsl:value-of select="//debtor/address"/></fo:block>
         <fo:block text-align="center" font-size="10pt">(наименование и нахождение должника)</fo:block>
-        <fo:table width="17cm" table-layout="fixed" margin-top="0.5cm">
+        <fo:table width="17cm" table-layout="fixed"><xsl:attribute name="margin-top"><xsl:value-of select="$margin-top"/></xsl:attribute>
           <fo:table-column column-width="40%"/>
           <fo:table-column column-width="10%"/>
           <fo:table-column column-width="50%"/>
@@ -81,7 +84,7 @@
             </fo:table-row>
           </fo:table-body>
         </fo:table>
-        <fo:table width="17cm" table-layout="fixed" margin-top="0.5cm">
+        <fo:table width="17cm" table-layout="fixed"><xsl:attribute name="margin-top"><xsl:value-of select="$margin-top"/></xsl:attribute>
           <fo:table-column column-width="45%"/>
           <fo:table-column column-width="25%"/>
           <fo:table-column column-width="30%"/>
@@ -102,19 +105,20 @@
             </fo:table-row>
           </fo:table-body>
         </fo:table>
-        <fo:block text-align="center" border-bottom="thin solid black" margin-top="0.5cm">
+        <fo:block text-align="center" border-bottom="thin solid black"><xsl:attribute name="margin-top"><xsl:value-of select="$margin-top"/></xsl:attribute>
         <xsl:choose><xsl:when test="string-length($topic) &gt; 1000">
           <xsl:attribute name="font-size">8pt</xsl:attribute>
+          <xsl:attribute name="margin-top">0.4cm</xsl:attribute>
         </xsl:when>
         </xsl:choose>
           <xsl:value-of select="$topic"/>
         </fo:block>
         <fo:block text-align="center" font-size="10pt">(формулировка решения, поставленного на голосование)</fo:block>
-        <fo:block text-align="center" border-bottom="thin solid black" margin-top="0.5cm">
+        <fo:block text-align="center" border-bottom="thin solid black"><xsl:attribute name="margin-top"><xsl:value-of select="$margin-top"/></xsl:attribute>
           <xsl:value-of select="text()"/>
         </fo:block>
         <fo:block text-align="center" font-size="10pt">(наименование, Ф. И. О. участника собрания кредиторов)</fo:block>
-        <fo:table width="17cm" table-layout="fixed" margin-top="0.5cm">
+        <fo:table width="17cm" table-layout="fixed"><xsl:attribute name="margin-top"><xsl:value-of select="$margin-top"/></xsl:attribute>
           <fo:table-column column-width="75%"/>
           <fo:table-column column-width="25%"/>
           <fo:table-body>
@@ -130,7 +134,7 @@
             </fo:table-row>
           </fo:table-body>
         </fo:table>
-        <fo:table width="17cm" table-layout="fixed" border="thin solid black" margin-top="0.5cm">
+        <fo:table width="17cm" table-layout="fixed" border="thin solid black"><xsl:attribute name="margin-top"><xsl:value-of select="$margin-top"/></xsl:attribute>
           <fo:table-column column-width="33%"/>
           <fo:table-column column-width="34%"/>
           <fo:table-column column-width="33%"/>
@@ -161,12 +165,12 @@
             </fo:table-row>
           </fo:table-body>
         </fo:table>
-        <fo:block font-weight="bold" text-align="center" margin-top="0.5cm">Разъяснение порядка заполнения бюллетеня</fo:block>
-        <fo:block text-align="justify" margin-top="0.5cm">Поставьте любой знак в квадрате с выбранным Вами вариантом голосования.</fo:block>
-        <fo:block text-align="justify" margin-top="0.5cm">Бюллетень, в котором знак поставлен более чем в одном квадрате либо не поставлен ни в одном из них, а также бюллетень, подписанный лицом, не зарегистрированным в журнале регистрации, либо неподписанный бюллетень
+        <fo:block font-weight="bold" text-align="center"><xsl:attribute name="margin-top"><xsl:value-of select="$margin-top"/></xsl:attribute>Разъяснение порядка заполнения бюллетеня</fo:block>
+        <fo:block text-align="justify"><xsl:attribute name="margin-top"><xsl:value-of select="$margin-top"/></xsl:attribute>Поставьте любой знак в квадрате с выбранным Вами вариантом голосования.</fo:block>
+        <fo:block text-align="justify"><xsl:attribute name="margin-top"><xsl:value-of select="$margin-top"/></xsl:attribute>Бюллетень, в котором знак поставлен более чем в одном квадрате либо не поставлен ни в одном из них, а также бюллетень, подписанный лицом, не зарегистрированным в журнале регистрации, либо неподписанный бюллетень
 считаются недействительными.</fo:block>
-        <fo:block text-align="justify" margin-top="0.5cm">Не допускается заполнение бюллетеня для голосования карандашом и внесение в него каких-либо исправлений.</fo:block>
-        <fo:block border-bottom="solid thin black" margin-top="0.5cm"> </fo:block>
+        <fo:block text-align="justify"><xsl:attribute name="margin-top"><xsl:value-of select="$margin-top"/></xsl:attribute>Не допускается заполнение бюллетеня для голосования карандашом и внесение в него каких-либо исправлений.</fo:block>
+        <fo:block border-bottom="solid thin black"><xsl:attribute name="margin-top"><xsl:value-of select="$margin-top"/></xsl:attribute> </fo:block>
         <fo:block font-size="10pt" text-align="center">(Фамилия, инициалы, подпись участника собрания кредиторов/представителя участника собрания кредиторов)</fo:block>
       </fo:block-container>
     </xsl:for-each>
